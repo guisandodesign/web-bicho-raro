@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/* HEADER */
+.header {
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.logo {
+    height: 60px;
+}
+
+/* HAMBURGUESA */
+.hamburger {
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: black;
+    margin: 5px 0;
+}
+
+/* NAV */
+.nav {
+    display: flex;
+    gap: 40px;
+    justify-self: center;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+/* RIGHT */
+.right {
+    justify-self: end;
+    display: flex;
+    gap: 20px;
+}
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 4000;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* SIDE MENU */
+.side-menu {
+    position: fixed;
+    top: 10px;
+    left: -320px;
+    width: 300px;
+    height: calc(100% - 20px);
+    padding: 80px 30px;
+    background: rgba(255, 255, 255, 0.15); /* Más opaco para legibilidad */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px 10px #5B1213;
+    border-radius: 12px;
+    transition: 0.4s;
+    z-index: 5000;
+}
+
+/* ACTIVO */
+.side-menu.active {
+    left: 10px;
+}
+
+/* LINKS */
+.side-menu a {
+    display: block;
+    margin-bottom: 25px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+/* BOTÓN CERRAR */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 5001; /* Siempre sobre el menú */
+    padding: 10px; /* Área de clic más grande */
+}
+
+/* botón carrito */
+.cart-btn {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* overlay */
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+    z-index: 1998;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* panel */
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 400px;
+    max-width: 100%;
+    height: 100%;
+    background: white;
+    padding: 30px;
+    transition: .35s ease;
+    z-index: 1999;
+    overflow-y: auto;
+}
+
+.cart-panel.active {
+    right: 0;
+}
+
+.cart-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    border: none;
+    background: none;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 18px 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-footer {
+    margin-top: 30px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+}
