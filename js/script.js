@@ -82,3 +82,45 @@ window.addToCart = function(name, price) {
 };
 
 });
+
+    // 2. Lógica de Scroll Reveal (Se mantiene igual, está OK)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+
+    /* ================= EFECTO ZOOM INICIAL ================= */
+gsap.registerPlugin(ScrollTrigger);
+
+const tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#inicio",
+        start: "top top",
+        end: "+=1800",      // Aumentamos un poco la duración para que se aprecie mejor
+        scrub: true,
+        pin: true,
+        pinSpacing: true
+    }
+});
+
+// 1. Zoom de la imagen de fondo
+tl.to(".hero-img", {
+    scale: 2.2,
+    ease: "none"
+}, 0);
+
+// 2. La foto pequeña aparece y se hace grande
+tl.to(".hero-secundaria", {
+    opacity: 1,
+    scale: 1,           /* Crece hasta su tamaño original (500px) */
+    left: "30%",        /* Hace un pequeño movimiento lateral mientras crece */
+    ease: "power2.inOut"
+}, 0.5);                /* Empieza a mitad del scroll del zoom */
+
+

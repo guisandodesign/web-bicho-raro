@@ -66,11 +66,160 @@
     <button class="close" id="closeMenu">&times;</button>
 
     <a href="#">Inicio</a>
-    <a href="#">Qué es Bicho Raro</a>
-    <a href="#">Sobre el proyecto</a>
+    <a href="#about">Qué es Bicho Raro</a>
+    <a href="#sobre el proyecto">Sobre el proyecto</a>
     <a href="#">Tienda</a>
     <a href="#">Contacto</a>
 </div>
+
+
+<main>
+
+    <!-- FOTO HOME + ISOTIPO -->
+    <!-- Sección del Zoom -->
+    <section id="inicio" class="hero-image-container">
+        <div class="reveal reveal-hero">
+            <img src="media/img/foto home.png" alt="Bicho Raro" class="hero-img">
+
+                    <!-- IMAGEN NUEVA: Aparecerá al final del zoom -->
+        <img src="media/img/isotipo.blanco.png" alt="Detalle" class="hero-secundaria">
+        </div>
+    </section>
+
+    <!-- DESCRIPCIÓN PIEZA -->
+    <!-- Sección de Texto (Contenido Siguiente) -->
+    <section class="texto-seccion">
+        <!-- El divisor que muerde la imagen -->
+        <div class="hero-divider"></div>
+        
+    <section id="about"class="seccion-mensaje">
+        <div class="mensaje-content reveal">
+            <p class="intro-texto">BICHO RARO ES UNA PIEZA DE DANZA CONTEMPORÁNEA</p>
+            <h1 class="titulo-grande">
+                HABLA DEL RECHAZO Y LA <span>IDENTIDAD</span>, 
+                DIRIGIDA A TODO AQUEL QUE SE HAYA SENTIDO RECHAZADO POR LA SOCIEDAD <span>BUSCA CREAR LA RUPTURA Y RECONSTRUCCIÓN DEL GÉNERO</span>.
+            </h1>
+        </div>
+    </section>
+    </section>
+
+
+    <!-- GALERÍA -->
+    <section id="sobre el proyecto" class="galeria-caotica reveal">
+    <div class="galeria-container">
+        <!-- Imagen 1 -->
+        <div class="galeria-item pos-1">
+            <a href="about.html">
+            <img src="media/img/foto1.jpg" alt="Proyecto">
+            <div class="ver-mas">VER MÁS</div>
+            </a>
+        
+        </div>
+        <!-- Imagen 2 -->
+        <div class="galeria-item pos-2">
+            <a href="about.html">
+            <img src="media/img/foto2.jpg" alt="Proyecto">
+            <div class="ver-mas">VER MÁS</div>
+            </a>
+        </div>
+       <!-- Imagen 3 -->
+        <div class="galeria-item pos-3">
+            <a href="about.html">
+            <img src="media/img/foto4.jpg" alt="Proyecto">
+            <div class="ver-mas">VER MÁS</div>
+            </a>
+        </div>
+
+        <!-- Imagen 4 -->
+        <div class="galeria-item pos-4">
+            <a href="about.html">
+            <img src="media/img/foto5.png" alt="Proyecto">
+            <div class="ver-mas">VER MÁS</div>
+            </a>
+        </div>
+
+        <!-- Imagen 5 -->
+        <div class="galeria-item pos-5">
+            <a href="about.html">
+            <img src="media/img/foto3.jpg" alt="Proyecto">
+            <div class="ver-mas">VER MÁS</div>
+            </a>
+        </div>
+
+        <!-- Imagen 6 -->
+        <div class="galeria-item pos-6">
+            <a href="about.html">
+            <img src="media/img/foto6.jpg" alt="Proyecto">
+            <div class="ver-mas">VER MÁS</div>
+            </a>
+        </div>
+
+        <!-- Imagen 7 -->
+        <div class="galeria-item pos-7">
+            <a href="about.html">
+            <img src="media/img/foto7.jpg" alt="Proyecto">
+            <div class="ver-mas">VER MÁS</div>
+            </a>
+        </div>
+
+        <!-- Imagen 8 -->
+        <div class="galeria-item pos-8">
+            <a href="about.html">
+            <img src="media/img/foto8.jpg" alt="Proyecto">
+            <div class="ver-mas">VER MÁS</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECCIÓN TIENDA -->
+<section id="tienda" class="shop-section reveal">
+    <!-- Texto gigante en movimiento -->
+    <div class="marquee">
+        <div class="marquee-content">
+            SHOP ONLINE SHOP ONLINE SHOP ONLINE SHOP ONLINE SHOP ONLINE SHOP ONLINE 
+        </div>
+    </div>
+
+    <!-- Contenedor de productos -->
+    <div class="shop-container">
+        
+        <!-- Producto 1: Kit Máscara -->
+        <div class="shop-item item-kit">
+            <img src="media/img/kit-mascara.png" alt="Kit Máscara">
+            <div class="product-info">
+                <h3>KIT MÁSCARA</h3>
+                <p>25.00 €</p>
+                <button onclick="addToCart('Kit Máscara', 25.00)">AÑADIR</button>
+            </div>
+        </div>
+
+        <!-- Producto 2: Fanzine -->
+        <div class="shop-item item-fanzine">
+            <img src="media/img/fanzine.png" alt="Fanzine">
+            <div class="product-info">
+                <h3>FANZINE</h3>
+                <p>12.00 €</p>
+                <button onclick="addToCart('Fanzine', 12.00)">AÑADIR</button>
+            </div>
+        </div>
+
+        <!-- Producto 3: Camiseta -->
+        <div class="shop-item item-camiseta">
+            <img src="media/img/camiseta.png" alt="Camiseta">
+            <div class="product-info">
+                <h3>CAMISETA</h3>
+                <p>20.00 €</p>
+                <button onclick="addToCart('Camiseta', 20.00)">AÑADIR</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+</main>
 
 <script src="menu.js"></script>
 

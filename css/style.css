@@ -1,11 +1,21 @@
+@font-face {
+    font-family: 'Atherosser';
+    src: url('fonts/ATHEROSSER.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Atherosser';
 }
 
 body {
-    font-family: sans-serif;
+    background: #EB5D1C;
+    color: black;
+    overflow-x: hidden;
 }
 
 /* HEADER */
@@ -36,6 +46,8 @@ body {
     background: black;
     margin: 5px 0;
 }
+
+
 
 /* NAV */
 .nav {
@@ -82,7 +94,7 @@ body {
     background: rgba(255, 255, 255, 0.15); /* Más opaco para legibilidad */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 0 30px 10px #5B1213;
+    box-shadow: 0 0 30px 10px #f49d5f;
     border-radius: 12px;
     transition: 0.4s;
     z-index: 5000;
@@ -187,3 +199,300 @@ body {
     color: white;
     cursor: pointer;
 }
+
+/* HERO IMAGE: Ocupa ancho total, alto proporcional */
+.hero-image-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    line-height: 0;
+    position: relative;
+    z-index: 1; /* Bajo el menú */
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-secundaria {
+    position: absolute;
+    top: 55%;           /* Un poco por debajo del centro vertical */
+    left: 35%;          /* 35% la desplaza a la izquierda sin llegar al borde */
+    transform: translate(-50%, -50%) scale(0.2); /* Empieza muy pequeña desde su centro */
+    width: 500px;       /* Tamaño más grande (ajústalo a tu gusto) */
+    height: auto;
+    opacity: 0;         /* Invisible al inicio */
+    z-index: 10;
+    pointer-events: none;
+    transition: filter 0.3s ease; /* Por si quieres añadir efectos luego */
+}
+
+
+
+/* DIVISOR Y CONTENIDO */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+.hero-divider {
+    width: 100%;
+    height: 150px;
+    background-image: url('../img/tu-mancha-organica.svg'); /* CAMBIA ESTO AL NOMBRE DE TU SVG */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: -80px; /* Muerde la imagen */
+}
+
+.hero-content-area {
+    background-color: #f4cba9;
+    padding: 80px 5vw;
+}
+
+/* Estilo específico para la aparición de la foto */
+.reveal-hero {
+    transition: opacity 1.8s ease-out, transform 1.5s ease-out !important;
+    pointer-events: none; 
+}
+
+/* Asegúrate de que el contenedor no corte la animación al subir */
+.hero-image-container {
+    overflow: visible; 
+}
+
+
+/* EFECTO REVEAL (JS) */
+/* Estado inicial: Invisible y desplazado */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    /* Aumentamos el tiempo de transición para que se note el efecto */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    will-change: opacity, transform; /* Mejora el rendimiento del scroll */
+}
+
+/* Estado activo: Visible */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* TEXTO HOME */
+.seccion-mensaje {
+    background-color: #EB5D1C; /* El color naranja fuerte de la imagen */
+    color: black;
+    padding: 100px 10%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 5; /* Asegura que esté por encima de la imagen si hay solapamiento */
+}
+
+.mensaje-content {
+    max-width: 1100px;
+}
+
+.intro-texto {
+    font-family: 'Averia Serif Libre', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.titulo-grande {
+    font-family: 'Krona One', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem); /* Se adapta al tamaño de pantalla */
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.titulo-grande span {
+    /* Opcional: un toque de transparencia para las palabras que quieras resaltar */
+    opacity: 0.7;
+}
+
+
+
+.galeria-caotica {
+    padding: 100px 0;
+    min-height: 120vh;
+    position: relative;
+}
+
+.galeria-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 1000px; /* Altura necesaria para distribuir las fotos */
+}
+
+.galeria-item {
+    position: absolute;
+    width: 200px; /* Tamaño base de las fotos */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.galeria-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Efecto HOVER */
+.galeria-item:hover {
+    transform: scale(1.3); /* Se hace grande */
+    z-index: 100; /* Se pone por encima de las demás */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* Texto VER MÁS */
+.ver-mas {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Atherosser';
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.galeria-item:hover .ver-mas {
+    opacity: 1;
+}
+
+/* POSICIONES ASIMÉTRICAS (Ajusta estos valores para "desordenarlas") */
+
+/* Arriba izquierda */
+.pos-1 { top: 5%; left: 12%; width: 160px; } 
+
+/* Arriba centro-derecha */
+.pos-2 { top: 12%; left: 42%; width: 200px; } 
+
+/* Fila superior, extremo derecho */
+.pos-6 { top: 10%; left: 82%; width: 170px; } 
+
+/* Centro izquierda (un poco más grande) */
+.pos-7 { top: 38%; left: 8%; width: 230px; } 
+
+/* Centro derecha (equilibrando el medio) */
+.pos-3 { top: 42%; left: 68%; width: 210px; } 
+
+/* Abajo izquierda */
+.pos-4 { top: 68%; left: 15%; width: 240px; } 
+
+/* Abajo centro (más pequeña, tipo detalle) */
+.pos-5 { top: 72%; left: 45%; width: 150px; } 
+
+/* Abajo derecha */
+.pos-8 { top: 80%; left: 78%; width: 190px; }
+
+/* AJUSTE PARA MÓVILES (Importante) */
+@media (max-width: 768px) {
+    .galeria-container {
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 columnas en móvil */
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .galeria-item {
+        position: relative !important; /* Quitamos el desorden en móvil para que sea legible */
+        top: auto !important;
+        left: auto !important;
+        width: 100% !important;
+    }
+}
+
+/* TIENDA*/
+.shop-section {
+    background-color: #E64A19;
+    padding: 150px 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* MARQUEE (Texto infinito) */
+.marquee {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    display: flex;
+    z-index: 1;
+}
+
+.marquee-content {
+    font-family: 'Krona One', sans-serif;
+    font-size: 15vw; /* Texto gigante */
+    font-weight: bold;
+    color: rgba(0, 0, 0, 1);
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* PRODUCTOS */
+.shop-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 600px;
+}
+
+.shop-item {
+    position: absolute;
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.shop-item img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+
+.shop-item:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* Posiciones tipo collage */
+.item-kit { top: 10%; left: 5%; }
+.item-fanzine { top: 40%; left: 40%; width: 220px; }
+.item-camiseta { top: 5%; right: 5%; width: 320px; }
+
+/* Info y Botón */
+.product-info h3 { font-size: 1rem; margin-top: 10px; }
+.product-info button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: 'Averia Serif Libre';
+}
+
+.product-info button:hover { background: white; color: black; }
