@@ -439,11 +439,11 @@ body {
 }
 
 .marquee-content {
-    font-family: 'Krona One', sans-serif;
+    font-family: 'Atherosser';
     font-size: 15vw; /* Texto gigante */
     font-weight: bold;
-    color: rgba(0, 0, 0, 1);
-    animation: marquee 20s linear infinite;
+    color: rgba(0, 0, 0, 0.5);
+    animation: marquee 50s linear infinite;
 }
 
 @keyframes marquee {
@@ -654,6 +654,13 @@ body {
     to { transform: translateX(-50%); }
 }
 
+/* IMG VESTUARIO */
+.galeria-vestuario {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 700px; /* Altura necesaria para distribuir las fotos */
+}
 
 /* INFO VESTUARIO */
 .vestuario-info {
