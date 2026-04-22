@@ -676,7 +676,57 @@ body {
 }
 
 
-/* Reutiliza tus clases pos-1, pos-2, etc. del código anterior */
+/* ================= APLICACIÓN DEL VESTUARIO================= */
+.carrusel-section {
+    padding: 100px 0;
+    width: 100%;
+    background-color: #f4f4f4;
+}
+
+/* Header centrado */
+.carrusel-header {
+    text-align: center;
+    margin-bottom: 60px;
+    font-family: 'Averia Serif Libre', serif;
+    text-transform: uppercase;
+}
+
+/* Contenedor CENTRADO y FIJO */
+.carrusel-estatico {
+    display: flex;
+    justify-content: center; /* Centra los items horizontalmente */
+    align-items: center;
+    gap: 15px;               /* Espacio entre fotos */
+    flex-wrap: nowrap;       /* Evita que bajen de línea */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* La tarjeta completa */
+.carrusel-item {
+    width: 220px;           /* Ajusta según cuántas fotos quieras que quepan */
+    height: 320px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Transición suave */
+    position: relative;
+}
+
+.carrusel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* HOVER de la tarjeta entera */
+.carrusel-item:hover {
+    transform: scale(1.1); /* Toda la tarjeta se hace grande */
+    z-index: 10;           /* Se pone por encima de las de al lado */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
+}
+
 
 
 
