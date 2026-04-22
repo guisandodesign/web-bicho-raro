@@ -547,7 +547,7 @@ body {
 /* ================= CRYSTAL BALL SECCIÓN MÁSCARA ================= */
 .crystal-section{
     width: 100%;
-    padding: 280px 0 60px 0;
+    padding: 280px 0 150px 0;
     display: flex;
     justify-content: center;
 }
@@ -619,6 +619,7 @@ body {
     min-height: 140vh; /* Espacio para el marquee y la galería */
     overflow: hidden; /* Importante para que el marquee no cree scroll lateral */
     padding-top: 50px; /* Reducimos el espacio superior al mínimo */
+    margin-top: 0; 
 }
 
 /* MARQUEE DIAGONAL */
@@ -661,7 +662,7 @@ body {
     right: 5%;         /* Lo pegamos a la derecha con un margen */
     text-align: left;  /* El bloque está a la derecha, pero el texto alinea a la izquierda */
     z-index: 15;       /* Por encima del marquee */
-    font-family: 'Averia Serif Libre', serif;
+    font-family: 'Atherosser';
     font-size: 11px;   /* Tamaño pequeño como en la foto */
     line-height: 1.4;
     text-transform: uppercase;
@@ -678,15 +679,18 @@ body {
 
 /* ================= APLICACIÓN DEL VESTUARIO================= */
 .carrusel-section {
-    padding: 100px 0;
+    padding: 20px 0;
     width: 100%;
     background-color: #f4f4f4;
+    margin-top: 0;
+    position: relative;
+    z-index: 10;
 }
 
 /* Header centrado */
 .carrusel-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     font-family: 'Averia Serif Libre', serif;
     text-transform: uppercase;
 }
