@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>BICHO RARO</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Hubballi&family=Krona+One&family=Pinyon+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+
+    </head>
+
+    <body>
+
+        
+<header class="header">
+    <div class="hamburger" id="openMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html"><img src="media/img/logo.negro.png" class="logo"></a>
+    </nav>
+
+<div class="right">
+
+    <div class="cart-btn" id="openCart">
+        🛒 <span id="cartCount"></span>
+    </div>
+</div>
+</header>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<div class="cart-panel" id="cartPanel">
+    <button class="cart-close" id="closeCart">&times;</button>
+
+    <h2>Tu carrito</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-footer">
+        <p>Total: <span id="cartTotal">0.00</span> €</p>
+        <button class="checkout-btn">Comprar</button>
+    </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay"></div>
+
+<!-- MENÚ LATERAL -->
+<div class="side-menu" id="sideMenu">
+    <button class="close" id="closeMenu">&times;</button>
+
+    <a href="#">Inicio</a>
+    <a href="#about">Qué es Bicho Raro</a>
+    <a href="#sobre el proyecto">Sobre el proyecto</a>
+    <a href="#">Tienda</a>
+    <a href="#">Contacto</a>
+</div>
+
+
+<main>
+
+    <!-- VÍDEO CABECERA -->
+   <section class="hero-video-container">
+    <!-- El vídeo se reproduce solo, en bucle y sin sonido -->
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="media/video/teaser.mp4" type="video/mp4">
+        Tu navegador no soporta vídeos.
+    </video>
+
+    <!-- Contenido encima del vídeo -->
+    <div class="video-overlay">
+        <h1 class="reveal">SOBRE BICHO RARO</h1>
+    </div>
+   </section>
+
+   <!-- SECCIÓN MÁSCARA -->
+<section class="crystal-section">
+    <div >
+        <span>(01)</span>
+        <p>MÁSCARA CRÁNEO<br>Construcción: CESBA Y GUISANDO DISEÑO</p>24 DICIEMBRE 2025 · 09 ENERO 2026
+    </div>
+    <div class="crystal-wrapper">
+        <div class="crystal-ball">
+            <!-- Cambiamos video por img -->
+            <img class="crystal-image" src="media/img/foto6.jpg" alt="Avalon Film">
+            <div class="crystal-glass"></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECCIÓN VESTUARIO -->
+<section class="vestuario-section">
+    <!-- Marquee Diagonal -->
+    <div class="marquee-diagonal">
+        <div class="marquee-wrapper">
+            <div class="marquee-text">
+                (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO
+            </div>
+        </div>
+    </div>
+
+        <!-- TEXTO PEQUEÑO A LA DERECHA -->
+    <div class="vestuario-info">
+        <p>(02)</p>
+        <p>VESTUARIO</p>
+        <p>Confección: ANDER BERTOLÍN</p>
+        <p>FEBRERO 2025 - MARZO 2025</p>
+    </div>
+
+    <!-- Galería (Reutilizando tu lógica de la Home) -->
+    <div class="galeria-container reveal">
+
+        <div class="galeria-item pos-1">
+            <img src="media/img/vestuario.png" alt="Vestuario 1">
+            <div class="ver-mas">PARTE DE ARRIBA</div>
+        </div>
+        <div class="galeria-item pos-2">
+            <img src="media/img/pantalón.png" alt="Vestuario 2">
+            <div class="ver-mas">PANTALÓN</div>
+        </div>
+        <!-- ... añade tus 8 fotos con las clases pos-1 a pos-8 ... -->
+    </div>
+    
+</section>
+
+</main>
+
+
+<footer class="site-footer-container">
+    <!-- La imagen de fondo -->
+    <img src="media/img/foto footer.jpg" alt="Fondo Footer" class="footer-bg-img">
+
+    <!-- El contenido (iconos y créditos) -->
+    <div class="footer-content">
+        <div class="footer-left">
+            <a href="#">BICHO RARO</a>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-regular fa-envelope"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-right">
+            <p>made by <span>GUISANDO DISEÑO</span></p>
+        </div>
+    </div>
+</footer>
+
+
+<script src="menu.js"></script>
+
+
+
+        <script src="java/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>

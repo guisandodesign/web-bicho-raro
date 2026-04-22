@@ -422,7 +422,6 @@ body {
 
 /* TIENDA*/
 .shop-section {
-    background-color: #E64A19;
     padding: 150px 0;
     position: relative;
     overflow: hidden;
@@ -496,3 +495,242 @@ body {
 }
 
 .product-info button:hover { background: white; color: black; }
+
+
+/* VÍDEO HEADER ABOUT */
+.hero-video-container {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Altura del video (80% de la pantalla) */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black; /* Fondo negro mientras carga el vídeo */
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Clave para que no se deforme */
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.video-overlay {
+    position: relative;
+    z-index: 2; /* Por encima del vídeo */
+    text-align: center;
+    color: white;
+}
+
+.video-overlay h1 {
+    font-family: 'Atherosser';
+    font-size: clamp(3rem, 8vw, 6rem);
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Oscurecer un poco el vídeo para que el texto se lea mejor */
+.hero-video-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+
+/* ================= CRYSTAL BALL SECCIÓN MÁSCARA ================= */
+.crystal-section{
+    width: 100%;
+    padding: 280px 0 60px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.crystal-wrapper{
+    perspective: 1200px;
+}
+
+.crystal-ball{
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+
+    box-shadow:
+        inset 0 0 40px rgba(255,255,255,0.6),
+        inset 0 -30px 60px rgba(0,0,0,0.25),
+        0 40px 80px rgba(0,0,0,0.25);
+
+    transition: transform 0.15s ease-out;
+    background: radial-gradient(
+        circle at top left,
+        rgba(255,255,255,0.5),
+        rgba(180,180,180,0.25),
+        rgba(90,90,90,0.35)
+    );
+}
+
+.crystal-image {
+    width: 110%;
+    height: 110%;
+    object-fit: cover;
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    border-radius: 50%;
+    /* Mantenemos el efecto de profundidad */
+    transform: translateZ(-40px); 
+    filter: contrast(1.05) brightness(0.95);
+    display: block; /* Asegura que no haya espacios extra */
+}
+
+/* El resto de tu CSS (.crystal-section, .crystal-ball, etc.) se queda exactamente igual */
+
+
+.crystal-glass{
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(255,255,255,0.65),
+            rgba(255,255,255,0.15) 40%,
+            rgba(255,255,255,0.05) 60%,
+            rgba(0,0,0,0.2) 100%
+        );
+}
+
+
+/* SECCIÓN VESTUARIO */
+.vestuario-section {
+    position: relative;
+    width: 100%;
+    min-height: 140vh; /* Espacio para el marquee y la galería */
+    overflow: hidden; /* Importante para que el marquee no cree scroll lateral */
+    padding-top: 50px; /* Reducimos el espacio superior al mínimo */
+}
+
+/* MARQUEE DIAGONAL */
+.marquee-diagonal {
+    position: absolute;
+    top: 20%; /* Ajusta la altura a la que cruza */
+    left: -10%; /* Empezamos fuera para cubrir el giro */
+    width: 120%; /* Más ancho para que al rotar cubra las esquinas */
+    transform: rotate(-8deg); /* Inclinación diagonal */
+    background: transparent;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.marquee-wrapper {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.marquee-text {
+    font-family: 'Atherosser';
+    font-size: 10vw;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.15); /* Color sutil para que no tape las fotos */
+    text-transform: uppercase;
+    animation: marquee-move 30s linear infinite;
+}
+
+@keyframes marquee-move {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+
+/* INFO VESTUARIO */
+.vestuario-info {
+    position: absolute;
+    top: 45%;          /* Lo bajamos (ajusta este % según necesites) */
+    right: 5%;         /* Lo pegamos a la derecha con un margen */
+    text-align: left;  /* El bloque está a la derecha, pero el texto alinea a la izquierda */
+    z-index: 15;       /* Por encima del marquee */
+    font-family: 'Averia Serif Libre', serif;
+    font-size: 11px;   /* Tamaño pequeño como en la foto */
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* Ajuste opcional para que el primer número destaque */
+.vestuario-info p:first-child {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+/* Reutiliza tus clases pos-1, pos-2, etc. del código anterior */
+
+
+
+/* FOOTER */
+.site-footer-container {
+    position: relative;
+    width: 100%;
+    height: 45vh; /* Ajusta este valor para decidir qué tan "alta" se ve la foto */
+    background-color: #EB5D1C; /* O el color de fondo de tu web */
+    display: flex;
+    align-items: flex-end; /* Alinea el texto del footer al final */
+    overflow: hidden;
+}
+
+.footer-bg-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;  /* Cubre todo el ancho */
+    height: 100%; /* Cubre el alto definido (45vh) */
+    object-fit: cover; /* Hace que la imagen llene el espacio sin deformarse */
+    object-position: bottom; /* Prioriza que se vea la parte de abajo (la montaña) */
+    z-index: 1;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    color: white; /* Cambia a black si la base de tu foto es clara */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra suave para leer bien sobre la foto */
+}
+
+
+
+.footer-left, .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.footer-left a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.footer-left a:hover {
+    opacity: 1;
+}
+
+.footer-right span {
+    font-weight: bold;
+}

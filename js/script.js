@@ -124,3 +124,31 @@ tl.to(".hero-secundaria", {
 }, 0.5);                /* Empieza a mitad del scroll del zoom */
 
 
+/* ================= CRYSTAL BALL PARALLAX ================= */
+document.addEventListener("mousemove", (e) => {
+    const ball = document.querySelector(".crystal-ball");
+    if(!ball) return;
+
+    const rect = ball.getBoundingClientRect();
+    const ballX = rect.left + rect.width / 2;
+    const ballY = rect.top + rect.height / 2;
+
+    const deltaX = (e.clientX - ballX) / rect.width;
+    const deltaY = (e.clientY - ballY) / rect.height;
+
+    const rotateX = deltaY * -12;
+    const rotateY = deltaX * 12;
+
+    ball.style.transform = `
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+    `;
+});
+
+document.addEventListener("mouseleave", () => {
+    const ball = document.querySelector(".crystal-ball");
+    if(ball){
+        ball.style.transform = "rotateX(0deg) rotateY(0deg)";
+    }
+});
+
