@@ -345,7 +345,7 @@ body {
 }
 
 
-
+/* GALERÍA HOME */
 .galeria-caotica {
     padding: 100px 0;
     min-height: 120vh;
@@ -1391,3 +1391,445 @@ body {
     background: linear-gradient(transparent, rgba(0,0,0,0.4));
 }
 
+
+
+/* --- MEDIA QUERY --- */
+/* ================= RESPONSIVE: MENÚ Y CARRITO ================= */
+
+@media (max-width: 768px) {
+    /* Header: Ajustamos espacios */
+    .header {
+        height: 60px;
+        padding: 0 15px;
+    }
+
+    .logo {
+        height: 45px; /* Logo un poco más pequeño en móvil */
+    }
+
+    /* Menú Lateral: Más ancho en móviles para que sea fácil tocar */
+    .side-menu {
+        width: 85%; /* Ocupa casi toda la pantalla */
+        left: -90%; /* Se esconde más a la izquierda */
+        padding: 60px 25px;
+    }
+
+    .side-menu.active {
+        left: 5%; /* Deja un margen pequeño a la izquierda */
+    }
+
+    /* Panel del Carrito: Ocupa toda la pantalla en móviles */
+    .cart-panel {
+        width: 100%;
+        right: -100%;
+        padding: 20px;
+    }
+
+    .cart-panel.active {
+        right: 0;
+    }
+
+    /* Ajuste de los items del carrito para que no se amontonen */
+    .cart-item {
+        gap: 10px;
+    }
+
+    .cart-item img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+
+/* ================= RESPONSIVE: HERO ================= */
+
+@media (max-width: 1024px) {
+    .hero-secundaria {
+        width: 400px; /* Reducimos un poco en tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-image-container {
+        height: 100vh; /* Forzamos que ocupe toda la pantalla en móvil */
+        overflow: hidden; /* Evitamos scroll lateral por el zoom */
+    }
+
+    .hero-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; /* Evita que la foto se deforme al estirarse en vertical */
+    }
+
+    .hero-secundaria {
+        width: 70% !important; /* En móvil usamos porcentaje para que no falle */
+        left: 50% !important;  /* Centramos el isotipo para que no se corte */
+        top: 50% !important;
+        transform: translate(-50%, -50%) scale(0.2); /* Mantenemos el punto de partida del JS */
+    }
+
+    .hero-divider {
+        height: 80px;      /* Mancha más pequeña */
+        margin-top: -40px; /* Menos solapamiento */
+    }
+}
+
+/* Para móviles muy estrechos */
+@media (max-width: 480px) {
+    .hero-secundaria {
+        width: 80% !important;
+    }
+}
+
+
+/* ================= RESPONSIVE: DESCRIPCIÓN PIEZA ================= */
+
+@media (max-width: 768px) {
+    /* Pegamos la sección naranja al Hero */
+    .texto-seccion {
+         margin-top: -150px !important; 
+         position: relative;
+         z-index: 100;
+    }
+
+    .seccion-mensaje {
+        padding: 40px 20px; /* Reducimos el aire lateral y superior */
+        min-height: auto;    /* En móvil no necesita ocupar toda la pantalla */
+        display: block;      /* Cambiamos a block para que el texto fluya mejor */
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* Reducimos la mancha divisoria */
+    .hero-divider {
+        height: 50px; 
+        margin-top: -10px;
+    }
+
+    .intro-texto {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .titulo-grande {
+        /* Ajustamos el tamaño para que no se corte ninguna palabra larga */
+        font-size: 1.8rem !important; 
+        line-height: 1.2;
+        letter-spacing: -1px;
+    }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 400px) {
+    .titulo-grande {
+        font-size: 1.5rem !important;
+    }
+}
+
+
+/* ================= RESPONSIVE: TIENDA ================= */
+
+@media (max-width: 1024px) {
+    .shop-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 columnas en tablet */
+        gap: 40px;
+        height: auto; /* Quitamos el alto fijo de 600px */
+        padding: 0 40px;
+    }
+
+    .shop-item {
+        position: relative !important; /* Anulamos el absoluto */
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        margin-bottom: 40px;
+    }
+
+    .marquee-content {
+        font-size: 20vw; /* Texto un poco más grande en tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .shop-section {
+        padding: 80px 0;
+    }
+
+    .shop-container {
+        grid-template-columns: 1fr; /* 1 sola columna en móvil */
+        padding: 0 20px;
+    }
+
+    .marquee-content {
+        font-size: 25vw;
+        animation-duration: 20s; /* Más rápido en móvil para que se lea */
+    }
+
+    .image-container {
+        height: 300px; /* Reducimos la caja de la camiseta en móvil */
+    }
+
+    /* Soporte para TAP en móvil (Clase activada por JS) */
+    .shop-item.touch-active .img-front {
+        opacity: 0;
+    }
+    .shop-item.touch-active .img-back {
+        opacity: 1;
+    }
+}
+
+/* ================= RESPONSIVE: MÁSCARA (CRYSTAL BALL) ================= */
+
+@media (max-width: 1024px) {
+    .crystal-ball {
+        width: 350px; /* Tamaño tablet */
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .crystal-section {
+        padding: 100px 20px; /* Reducimos el padding exagerado de 280px */
+        flex-direction: column; /* Texto arriba, bola abajo */
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .crystal-ball {
+        width: 280px; /* Tamaño móvil */
+        height: 280px;
+    }
+
+    /* Ajuste de los textos laterales */
+    .crystal-section div:first-child {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .crystal-ball {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+/* ================= RESPONSIVE: VESTUARIO ================= */
+
+@media (max-width: 1024px) {
+    .vestuario-section {
+        min-height: auto;
+        padding-bottom: 100px;
+    }
+    
+  .galeria-vestuario {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra las fotos pequeñas */
+        gap: 40px;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .vestuario-section {
+        padding-top: 80px;
+    }
+
+    /* Marquee: Lo hacemos más pequeño para que no coma toda la pantalla */
+    .marquee-text {
+        font-size: 18vw;
+    }
+    
+    .marquee-diagonal {
+        top: 15%;
+        transform: rotate(-5deg); /* Menos inclinación en móvil para que no corte tanto espacio */
+    }
+
+    /* Info Vestuario: Deja de ser absoluta y se centra arriba */
+    .vestuario-info {
+        position: relative;
+        top: auto;
+        right: auto;
+        text-align: center;
+        margin-bottom: 50px;
+        padding: 0 20px;
+        z-index: 10;
+    }
+
+    /* Galería: De posiciones locas a una cuadrícula ordenada */
+    .galeria-vestuario {
+        display: grid;
+        grid-template-columns: 1fr; /* Una foto por fila en móvil */
+        gap: 30px;
+        height: auto;
+        padding: 0 20px;
+    }
+
+    .galeria-item {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        /* AQUÍ AJUSTAS EL TAMAÑO: */
+        width: 45% !important; /* Reducido al 65% del ancho del móvil */
+        max-width: 250px;      /* Límite máximo para que no se vean gigantes */
+        margin: 0 auto !important;
+    }
+
+        .galeria-item .pos-1 {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        /* AQUÍ AJUSTAS EL TAMAÑO: */
+        width: 35% !important; /* Reducido al 65% del ancho del móvil */
+        max-width: 250px;      /* Límite máximo para que no se vean gigantes */
+        margin: 0 auto !important;
+    }
+
+    .galeria-item img {
+        border-radius: 8px; /* Un toque de diseño para fotos pequeñas */
+    }
+
+    /* Aseguramos que el texto "Ver más" sea legible en pequeño */
+    .ver-mas {
+        font-size: 0.7rem;
+        padding: 5px;
+    }
+    
+    /* El efecto hover se activa con tap */
+    .galeria-item.active .ver-mas,
+    .galeria-item:active .ver-mas {
+        opacity: 1;
+    }
+}
+
+
+/* ================= RESPONSIVE: LOCALIZACIONES ================= */
+
+@media (max-width: 1024px) {
+    .image-wrapper {
+        height: 60vh; /* Reducimos un poco la altura en tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title-loc.centered {
+        padding: 60px 20px 40px;
+        font-size: 1.2rem;
+    }
+
+    .catalog-editorial {
+        grid-template-columns: 1fr; /* Una localización debajo de otra */
+    }
+
+    .image-wrapper {
+        height: 50vh; /* Altura más cómoda para móvil */
+    }
+
+    /* En móvil, hacemos que el texto sea un poco más visible de base 
+       o que reaccione al toque (tap) */
+    .editorial-block:hover .hover-info-container,
+    .editorial-block.touch-active .hover-info-container {
+        opacity: 1;
+    }
+
+    .hover-info-container {
+        padding: 20px;
+    }
+
+    .loc-name-hover {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    .extra-details p {
+        font-size: 11px;
+    }
+
+    .extra-details small {
+        font-size: 9px;
+    }
+}
+
+
+
+
+/* ================= RESPONSIVE: FOOTER ================= */
+
+@media (max-width: 1024px) {
+    .site-footer-container {
+        height: 70vh; /* Bajamos un poco la altura en tablets */
+    }
+    
+    .card-item {
+        width: 130px; /* Cartas ligeramente más pequeñas */
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-footer-container {
+        height: auto; /* Que el alto se adapte al contenido apilado */
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .footer-bg-img {
+        height: 100%; /* La montaña sigue de fondo cubriendo todo */
+    }
+
+    /* Reposicionamos el contenedor de cartas para que no flote en el cielo */
+    .footer-cards-overlay {
+        position: relative;
+        top: auto;
+        padding: 100px 0 50px 0;
+    }
+
+    .gallery-cards-container {
+        flex-wrap: wrap; /* En móvil las cartas pueden bajar a la siguiente línea */
+        justify-content: center;
+        gap: 15px; /* Les damos aire en lugar de solaparlas tanto */
+    }
+
+    .card-item {
+        margin: 0 !important; /* Quitamos el solapamiento negativo */
+        width: 40vw; /* 2 cartas por fila aprox */
+        height: 25vh;
+        transform: rotate(0deg) !important; /* Las ponemos rectas para que se vean bien */
+        top: auto !important;
+    }
+
+    .card-item img {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra más discreta */
+    }
+
+    /* Desactivamos el escalado gigante en móvil para evitar que se salgan de la pantalla */
+    .card-item:hover, .card-item.touch-active {
+        transform: translateY(-10px) scale(1.05) rotate(0deg);
+        margin: 0 !important;
+    }
+
+    .card-label {
+        opacity: 1; /* En móvil que el texto se vea siempre, no solo en hover */
+        font-size: 10px;
+    }
+
+    /* Texto inferior: Apilado vertical */
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .footer-left, .social-icons {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

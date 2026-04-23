@@ -17,6 +17,13 @@ const closeMenuFn = () => {
 closeBtn?.addEventListener("click", closeMenuFn);
 overlay?.addEventListener("click", closeMenuFn);
 
+// Cerrar menú automáticamente al hacer clic en un enlace (para móviles)
+document.querySelectorAll(".side-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+        closeMenuFn();
+    });
+});
+
 /* ================= CARRITO Y TIENDA (ACTUALIZADO CON IMÁGENES) ================= */
 document.addEventListener("DOMContentLoaded", () => {
     const openCart = document.getElementById("openCart");
@@ -119,23 +126,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-    // 2. GSAP Hero Zoom (Solo si existe #inicio)
-    gsap.registerPlugin(ScrollTrigger);
-    if (document.querySelector("#inicio")) {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#inicio",
-                start: "top top",
-                end: "+=1800",
-                scrub: true,
-                pin: true,
-                pinSpacing: true
-            }
-        });
+// 2. GSAP Hero Zoom (Solo si existe #inicio)
+gsap.registerPlugin(ScrollTrigger);
+if (document.querySelector("#inicio")) {
+    // Detectamos si el ancho de pantalla es de móvil
+    const isMobile = window.innerWidth < 768;
 
-        tl.to(".hero-img", { scale: 2.2, ease: "none" }, 0);
-        tl.to(".hero-secundaria", { opacity: 1, scale: 1, left: "30%", ease: "power2.inOut" }, 0.5);
-    }
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#inicio",
+            start: "top top",
+            // Si es móvil, el espacio del scroll es 800, si no, 1800
+            end: isMobile ? "+=800" : "+=1800",
+            scrub: true,
+            pin: true,
+            pinSpacing: true
+        }
+    });
+
+    tl.to(".hero-img", { scale: 2.2, ease: "none" }, 0);
+    
+    // Ajuste de posición del isotipo en móvil
+    tl.to(".hero-secundaria", { 
+        opacity: 1, 
+        scale: 1, 
+        left: isMobile ? "50%" : "30%", // Centrado en móvil, lateral en PC
+        ease: "power2.inOut" 
+    }, 0.5);
+}
+
 });
 
 /* ================= CRYSTAL BALL PARALLAX ================= */
@@ -264,3 +283,48 @@ $("#order-id").text(`Pedido: ${order.id} · Total: ${money(order.total, order.cu
 
 $("#order-summary").html(linesHtml);
 }
+
+
+/* ================= TOUCH SUPPORT (TAP VS HOVER) ================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const touchItems = document.querySelectorAll('.galeria-item, .shop-item, .card-item, .loc-card, .carrusel-item');
+
+    touchItems.forEach(item => {
+        item.addEventListener('touchstart', function() {
+            // Quitamos la clase a otros elementos para que solo uno esté activo
+            touchItems.forEach(el => el.classList.remove('touch-active'));
+            this.classList.add('touch-active');
+        }, {passive: true});
+    });
+});
+
+
+/* Detectar toque en móvil para productos */
+document.addEventListener("touchstart", (e) => {
+    const item = e.target.closest('.shop-item');
+    if (item) {
+        item.classList.toggle('touch-active');
+    } else {
+        // Si toca fuera, quitamos el efecto a todos
+        document.querySelectorAll('.shop-item').forEach(el => el.classList.remove('touch-active'));
+    }
+}, {passive: true});
+
+/* Reset de la bola en dispositivos táctiles si se queda girada */
+document.addEventListener("touchstart", () => {
+    const ball = document.querySelector(".crystal-ball");
+    if(ball) {
+        // En móviles, si no hay ratón, mantenemos la bola centrada
+        // o podrías vincularlo al scroll si quieres algo más pro
+        ball.style.transform = "rotateX(0deg) rotateY(0deg)";
+    }
+}, {passive: true});
+
+/* Soporte para Tap en Localizaciones */
+document.querySelectorAll('.editorial-block').forEach(block => {
+    block.addEventListener('touchstart', function() {
+        // Alterna la visibilidad al tocar
+        this.classList.toggle('touch-active');
+    }, {passive: true});
+});
+
