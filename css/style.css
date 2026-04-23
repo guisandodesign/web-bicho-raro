@@ -1592,29 +1592,50 @@ body {
 
 @media (max-width: 768px) {
     .crystal-section {
-        padding: 100px 20px; /* Reducimos el padding exagerado de 280px */
+        padding: 60px 20px; /* Reducimos mucho el padding superior */
+        display: flex;
         flex-direction: column; /* Texto arriba, bola abajo */
         align-items: center;
         text-align: center;
-        gap: 40px;
+        gap: 30px;
+        min-height: auto;
+    }
+
+.crystal-wrapper {
+        perspective: 1000px;
+        width: 100%; /* Asegura que el wrapper ocupe el ancho disponible */
+        display: flex;
+        justify-content: center;
     }
 
     .crystal-ball {
-        width: 280px; /* Tamaño móvil */
-        height: 280px;
+        /* Cambiamos px fijos por un tamaño basado en el ancho de pantalla */
+        width: 70vw !important; 
+        height: 70vw !important;
+        max-width: 300px; /* Límite para que no se vea gigante en tablets */
+        max-height: 300px;
+        
+        /* Forzamos que se vea */
+        display: block !important;
+        margin: 0 auto;
+        
+        /* Mantenemos las sombras pero más suaves para móvil */
+        box-shadow:
+            inset 0 0 20px rgba(255,255,255,0.6),
+            0 20px 40px rgba(0,0,0,0.2);
     }
 
-    /* Ajuste de los textos laterales */
-    .crystal-section div:first-child {
-        width: 100%;
-        max-width: 320px;
+    .crystal-image {
+        /* Aseguramos que la imagen interna siga cubriendo la bola */
+        width: 115%;
+        height: 115%;
     }
 }
 
 @media (max-width: 480px) {
     .crystal-ball {
-        width: 220px;
-        height: 220px;
+        width: 250px !important;
+        height: 250px !important;
     }
 }
 
@@ -1755,6 +1776,69 @@ body {
     }
 }
 
+
+/* ================= RESPONSIVE: CHECKOUT ================= */
+
+@media (max-width: 1024px) {
+    .checkout-page {
+        padding: 100px 30px 60px;
+    }
+    
+    .checkout-grid {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .checkout-page {
+        padding: 90px 20px 40px;
+    }
+
+    .checkout-title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .checkout-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+        gap: 30px;
+    }
+
+    /* Movemos el resumen arriba en móvil para que el usuario vea su pedido primero */
+    .checkout-summary {
+        order: -1; 
+        padding: 20px;
+    }
+
+    .checkout-form {
+        padding: 20px;
+    }
+
+    .checkout-item {
+        grid-template-columns: 60px 1fr auto; /* Miniaturas más pequeñas en móvil */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .checkout-thumb {
+        width: 60px;
+        height: 60px;
+    }
+
+    .checkout-name {
+        font-size: 15px;
+    }
+
+    .field.two {
+        grid-template-columns: 1fr; /* Inputs uno debajo de otro */
+        gap: 0;
+    }
+
+    .place-order-btn {
+        padding: 18px;
+        font-size: 14px;
+    }
+}
 
 
 
