@@ -673,25 +673,6 @@ body {
 }
 
 
-/* MÁSCARA 3D */
-.seccion-3d {
-    width: 100%;
-    height: 500px; /* Altura del visor 3D */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent; /* O el naranja de tu web */
-}
-
-model-viewer {
-    width: 100%;
-    height: 500px;
-    outline: none;
-    --poster-color: transparent; /* Evita fondo blanco mientras carga */
-    background-color: #eee;
-    display: block;
-}
-
 
 
 /* SECCIÓN VESTUARIO */
@@ -819,6 +800,94 @@ model-viewer {
     z-index: 10;           /* Se pone por encima de las de al lado */
     box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
 }
+
+/* ================= LOCALIZACIONES ================= */
+/* Título (03) CENTRADO */
+.section-title-loc.centered {
+    width: 100%;
+    text-align: center;
+    padding: 100px 0 60px;
+    font-family: 'Atherosser';
+    font-size: 1.5rem;
+    background-color: #EB5D1C;
+    margin: 0;
+}
+
+.catalog-editorial {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #EB5D1C;
+}
+
+.editorial-block {
+    position: relative;
+    cursor: pointer;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+}
+
+/* CONTENEDOR DE TEXTOS (Oculto de inicio) */
+.hover-info-container {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3); /* Capa oscura muy sutil */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Invisible de inicio */
+    transition: opacity 0.5s ease;
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+/* Nombre de la localización (Averia Serif) */
+.loc-name-hover {
+    font-family: 'Atherosser';
+    font-size: 18px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Datos extra (Krona One) */
+.extra-details p {
+    font-family: 'Krona One', sans-serif;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.extra-details small {
+    font-family: 'Averia Serif Libre', serif;
+    font-size: 10px;
+    opacity: 0.8;
+    text-transform: uppercase;
+}
+
+/* EFECTO HOVER */
+.editorial-block:hover .hover-info-container {
+    opacity: 1; /* Revela todos los textos */
+}
+
+.editorial-block:hover img {
+    transform: scale(1.1); /* Ligero zoom al entrar */
+}
+
+
 
 
 /* ===== CHECKOUT ===== */
