@@ -1189,10 +1189,11 @@ model-viewer {
 .site-footer-container {
     position: relative;
     width: 100%;
-    height: 45vh; /* Ajusta este valor para decidir qué tan "alta" se ve la foto */
-    background-color: #EB5D1C; /* O el color de fondo de tu web */
+    height: 80vh; /* Aumentado de 45vh para dar espacio a las cartas */
+    background-color: #EB5D1C;
     display: flex;
-    align-items: flex-end; /* Alinea el texto del footer al final */
+    flex-direction: column;
+    justify-content: flex-end;
     overflow: hidden;
 }
 
@@ -1200,25 +1201,22 @@ model-viewer {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;  /* Cubre todo el ancho */
-    height: 100%; /* Cubre el alto definido (45vh) */
-    object-fit: cover; /* Hace que la imagen llene el espacio sin deformarse */
-    object-position: bottom; /* Prioriza que se vea la parte de abajo (la montaña) */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
     z-index: 1;
 }
 
-.footer-content {
-    position: relative;
-    z-index: 2;
+/* --- ESTILO DE LAS CARTAS --- */
+.footer-cards-overlay {
+    position: absolute;
+    top: 30%; /* Ajusta esto para subirlas o bajarlas en el cielo */
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    color: white; /* Cambia a black si la base de tu foto es clara */
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra suave para leer bien sobre la foto */
+    justify-content: center;
+    z-index: 5; /* Por encima de la foto, por debajo del texto */
 }
-
-
 
 .footer-left, .social-icons {
     display: flex;
@@ -1236,6 +1234,72 @@ model-viewer {
     opacity: 1;
 }
 
-.footer-right span {
-    font-weight: bold;
+.gallery-cards-container {
+    display: flex;
+    align-items: flex-end;
 }
+
+.card-item {
+    position: relative;
+    width: 150px; /* Tamaño de las cartas */
+    height: 210px;
+    margin: 0 -20px; /* Solapamiento lateral */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: rotate(var(--rotation));
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Inclinaciones para el efecto abanico */
+.card-item:nth-child(1) { --rotation: -7deg; }
+.card-item:nth-child(2) { --rotation: -3deg; top: -15px; }
+.card-item:nth-child(3) { --rotation: 4deg; top: -10px; }
+.card-item:nth-child(4) { --rotation: 8deg; }
+
+.card-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #f4cba9; /* Borde tipo foto física */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px 10px #f49d5f;
+    border-radius: 5%;
+
+}
+
+/* HOVER: La carta se eleva y crece */
+.card-item:hover {
+    transform: translateY(-40px) scale(1.4) rotate(0deg);
+    z-index: 100;
+    margin: 0 35px; /* Abre espacio a los lados al crecer */
+}
+
+.card-label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-size: 9px;
+    font-family: 'Atherosser';
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card-item:hover .card-label {
+    opacity: 1;
+}
+
+/* --- TEXTO INFERIOR --- */
+.footer-content {
+    position: relative;
+    z-index: 10; /* Siempre visible sobre las fotos al subir */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 40px;
+    color: white;
+    background: linear-gradient(transparent, rgba(0,0,0,0.4));
+}
+
