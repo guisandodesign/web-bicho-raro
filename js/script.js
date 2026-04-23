@@ -4,86 +4,111 @@ const closeBtn = document.getElementById("closeMenu");
 const menu = document.getElementById("sideMenu");
 const overlay = document.getElementById("overlay");
 
-// abrir
-openBtn.addEventListener("click", () => {
+openBtn?.addEventListener("click", () => {
     menu.classList.add("active");
     overlay.classList.add("active");
 });
 
-// cerrar con X
-closeBtn.addEventListener("click", () => {
+const closeMenuFn = () => {
     menu.classList.remove("active");
     overlay.classList.remove("active");
-});
-
-// cerrar clic fuera
-overlay.addEventListener("click", () => {
-    menu.classList.remove("active");
-    overlay.classList.remove("active");
-});
-
-/* ================= CARRITO ================= */
-document.addEventListener("DOMContentLoaded", () => {
-
-const openCart = document.getElementById("openCart");
-const closeCart = document.getElementById("closeCart");
-const cartPanel = document.getElementById("cartPanel");
-const cartOverlay = document.getElementById("cartOverlay");
-
-const cartItems = document.getElementById("cartItems");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-/* abrir / cerrar */
-openCart.addEventListener("click", () => {
-    cartPanel.classList.add("active");
-    cartOverlay.classList.add("active");
-});
-
-closeCart.addEventListener("click", closeCartFn);
-cartOverlay.addEventListener("click", closeCartFn);
-
-function closeCartFn() {
-    cartPanel.classList.remove("active");
-    cartOverlay.classList.remove("active");
-}
-
-/* render */
-function renderCart() {
-    cartItems.innerHTML = "";
-
-    let total = 0;
-
-    cart.forEach((item, index) => {
-        total += item.price;
-
-        cartItems.innerHTML += `
-            <div class="cart-item">
-                <span>${item.name}</span>
-                <span>${item.price.toFixed(2)} €</span>
-            </div>
-        `;
-    });
-
-    cartCount.textContent = cart.length;
-    cartTotal.textContent = total.toFixed(2);
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-renderCart();
-
-/* FUNCIÓN para añadir productos */
-window.addToCart = function(name, price) {
-    cart.push({ name, price });
-    renderCart();
 };
 
+closeBtn?.addEventListener("click", closeMenuFn);
+overlay?.addEventListener("click", closeMenuFn);
+
+/* ================= CARRITO Y TIENDA (ACTUALIZADO CON IMÁGENES) ================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const openCart = document.getElementById("openCart");
+    const closeCart = document.getElementById("closeCart");
+    const cartPanel = document.getElementById("cartPanel");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+    const checkoutBtn = document.querySelector(".checkout-btn");
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    /* Abrir / Cerrar Carrito */
+    openCart?.addEventListener("click", () => {
+        cartPanel.classList.add("active");
+        cartOverlay.classList.add("active");
+    });
+
+    const closeCartFn = () => {
+        cartPanel.classList.remove("active");
+        cartOverlay.classList.remove("active");
+    };
+
+    closeCart?.addEventListener("click", closeCartFn);
+    cartOverlay?.addEventListener("click", closeCartFn);
+
+    /* Renderizar Carrito */
+    function renderCart() {
+        if (!cartItems) return;
+        cartItems.innerHTML = "";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            total += item.price;
+            // Usamos item.image para la miniatura
+            cartItems.innerHTML += `
+                <div class="cart-item" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; position: relative;">
+                    <img src="${item.image}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px; background: #eee;">
+                    <div style="flex: 1;">
+                        <p style="margin:0; font-weight:bold; font-size: 14px; line-height: 1.2;">${item.name}</p>
+                        <small style="color: #666;">${item.price.toFixed(2)} €</small>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${index})" style="background:none; border:none; color:#bbb; cursor:pointer; font-size: 20px;">✕</button>
+                </div>
+            `;
+        });
+
+        if (cartCount) cartCount.textContent = cart.length;
+        if (cartTotal) cartTotal.textContent = total.toFixed(2);
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    /* Funciones Globales del Carrito */
+    // Ahora recibe name, price e image
+    window.addToCart = function(name, price, image) {
+        const imgPath = image || 'media/img/logo.negro.png'; // Imagen por defecto
+        cart.push({ name, price, image: imgPath });
+        renderCart();
+        cartPanel.classList.add("active");
+        cartOverlay.classList.add("active");
+    };
+
+    window.removeFromCart = function(index) {
+        cart.splice(index, 1);
+        renderCart();
+    };
+
+    /* Función específica para camiseta con talla */
+    window.agregarCamiseta = function() {
+        const selector = document.getElementById("talla-camiseta");
+        const talla = selector ? selector.value : "M";
+        // Añadimos la imagen delantera de la camiseta
+        window.addToCart(`Camiseta (Talla ${talla})`, 20.00, 'media/img/camiseta-delantera.png');
+    };
+
+    /* BOTÓN COMPRAR -> REDIRECCIÓN A CHECKOUT */
+    checkoutBtn?.addEventListener("click", () => {
+        if (cart.length > 0) {
+            window.location.href = "checkout.html";
+        } else {
+            alert("Tu carrito está vacío.");
+        }
+    });
+
+    renderCart();
 });
 
-    // 2. Lógica de Scroll Reveal (Se mantiene igual, está OK)
+
+/* ================= EFECTOS VISUALES (GSAP & REVEAL) ================= */
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Scroll Reveal
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -94,35 +119,24 @@ window.addToCart = function(name, price) {
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
+    // 2. GSAP Hero Zoom (Solo si existe #inicio)
+    gsap.registerPlugin(ScrollTrigger);
+    if (document.querySelector("#inicio")) {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#inicio",
+                start: "top top",
+                end: "+=1800",
+                scrub: true,
+                pin: true,
+                pinSpacing: true
+            }
+        });
 
-    /* ================= EFECTO ZOOM INICIAL ================= */
-gsap.registerPlugin(ScrollTrigger);
-
-const tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: "#inicio",
-        start: "top top",
-        end: "+=1800",      // Aumentamos un poco la duración para que se aprecie mejor
-        scrub: true,
-        pin: true,
-        pinSpacing: true
+        tl.to(".hero-img", { scale: 2.2, ease: "none" }, 0);
+        tl.to(".hero-secundaria", { opacity: 1, scale: 1, left: "30%", ease: "power2.inOut" }, 0.5);
     }
 });
-
-// 1. Zoom de la imagen de fondo
-tl.to(".hero-img", {
-    scale: 2.2,
-    ease: "none"
-}, 0);
-
-// 2. La foto pequeña aparece y se hace grande
-tl.to(".hero-secundaria", {
-    opacity: 1,
-    scale: 1,           /* Crece hasta su tamaño original (500px) */
-    left: "30%",        /* Hace un pequeño movimiento lateral mientras crece */
-    ease: "power2.inOut"
-}, 0.5);                /* Empieza a mitad del scroll del zoom */
-
 
 /* ================= CRYSTAL BALL PARALLAX ================= */
 document.addEventListener("mousemove", (e) => {
@@ -136,20 +150,117 @@ document.addEventListener("mousemove", (e) => {
     const deltaX = (e.clientX - ballX) / rect.width;
     const deltaY = (e.clientY - ballY) / rect.height;
 
-    const rotateX = deltaY * -12;
-    const rotateY = deltaX * 12;
-
-    ball.style.transform = `
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-    `;
+    ball.style.transform = `rotateX(${deltaY * -12}deg) rotateY(${deltaX * 12}deg)`;
 });
 
 document.addEventListener("mouseleave", () => {
     const ball = document.querySelector(".crystal-ball");
-    if(ball){
-        ball.style.transform = "rotateX(0deg) rotateY(0deg)";
-    }
+    if(ball) ball.style.transform = "rotateX(0deg) rotateY(0deg)";
 });
 
 
+
+
+
+/* ================= LÓGICA ESPECÍFICA PARA CHECKOUT.HTML ================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const checkoutItemsContainer = document.getElementById("checkout-items");
+    const subtotalEl = document.getElementById("checkout-subtotal");
+    const totalEl = document.getElementById("checkout-total");
+    const checkoutForm = document.getElementById("checkout-form");
+
+    // Salir si no estamos en la página de checkout
+    if (!checkoutItemsContainer) return;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function renderCheckoutPage() {
+        if (cart.length === 0) {
+            document.getElementById("checkout-empty").style.display = "block";
+            document.querySelector(".checkout-grid").style.opacity = "0.5";
+            document.querySelector(".place-order-btn").disabled = true;
+            return;
+        }
+
+        checkoutItemsContainer.innerHTML = "";
+        let subtotal = 0;
+
+        cart.forEach((item) => {
+            subtotal += item.price;
+            
+            // Intentamos obtener una imagen. Si no existe en el objeto item, ponemos una por defecto.
+            const imgSrc = item.image || 'media/img/logo.negro.png';
+
+            checkoutItemsContainer.innerHTML += `
+                <div class="checkout-item">
+                    <img src="${imgSrc}" class="checkout-thumb" alt="${item.name}">
+                    <div class="checkout-info">
+                        <span class="checkout-name">${item.name}</span>
+                        <span class="checkout-meta">BICHO RARO COLLECTION</span>
+                    </div>
+                    <span class="checkout-price">${item.price.toFixed(2)}€</span>
+                </div>
+            `;
+        });
+
+        const envio = 5.00; 
+        subtotalEl.textContent = `${subtotal.toFixed(2)}€`;
+        document.getElementById("checkout-shipping").textContent = `${envio.toFixed(2)}€`;
+        totalEl.textContent = `${(subtotal + envio).toFixed(2)}€`;
+    }
+
+    // Manejo del formulario de pago
+    checkoutForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        // Efecto visual de carga (opcional)
+        const btn = document.getElementById("place-order");
+        btn.textContent = "Procesando...";
+        btn.style.opacity = "0.5";
+
+        setTimeout(() => {
+            alert("¡Pedido realizado con éxito! Gracias por confiar en BICHO RARO.");
+            localStorage.removeItem("cart"); // Limpiar carrito
+            window.location.href = "index.html"; // Volver al inicio
+        }, 2000);
+    });
+
+    renderCheckoutPage();
+});
+
+
+
+  /* ==== CONFIRMACIÓN ==== */
+function renderConfirmation() {
+    if (!$("#order-summary").length) return;
+
+let order = null;
+try { order = JSON.parse(localStorage.getItem(LAST_ORDER_KEY)); } catch {}
+
+    if (!order) {
+        $("#order-id").text("No hay pedido guardado.");
+    return;
+    }
+
+$("#order-id").text(`Pedido: ${order.id} · Total: ${money(order.total, order.currency)}`);
+
+    const PRODUCTS = getProductsSafe() || {};
+
+    const linesHtml = (order.items || []).map(it => {
+    const p = PRODUCTS[it.sku];
+    const img = (p && p.images && p.images[0]) ? p.images[0] : "img/placeholder.png";
+
+    return `
+        <div class="checkout-item">
+            <img class="checkout-thumb" src="${img}" alt="${it.name}">
+            <div class="checkout-info">
+            <div class="checkout-name">${it.name}</div>
+            <div class="checkout-meta">Talla: ${it.size || "—"} · Cantidad: ${it.qty}</div>
+            </div>
+            <div class="checkout-price">${money(it.lineTotal, order.currency)}</div>
+        </div>
+    `;
+}).join("");
+
+$("#order-summary").html(linesHtml);
+}

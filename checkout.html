@@ -8,7 +8,6 @@
         <!-- CSS -->
         <link rel="stylesheet" href="css/style.css">
 
-
         <!-- Icons -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
@@ -19,9 +18,6 @@
         
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
-
-                <!-- 3D -->
-        <script type="module" src="https://googleapis.com"></script>
 
     </head>
 
@@ -71,125 +67,105 @@
 
     <a href="#">Inicio</a>
     <a href="#about">Qué es Bicho Raro</a>
-    <a href="#sobre el proyecto">Sobre el proyecto</a>
+    <a href="#about.html">Sobre el proyecto</a>
     <a href="#">Tienda</a>
     <a href="#">Contacto</a>
 </div>
 
 
-<main>
+ <!-- CHECKOUT -->
+        <main class="checkout-page">
+            <h1 class="checkout-title">Checkout</h1>
 
-    <!-- VÍDEO CABECERA -->
-   <section class="hero-video-container">
-    <!-- El vídeo se reproduce solo, en bucle y sin sonido -->
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="media/video/teaser.mp4" type="video/mp4">
-        Tu navegador no soporta vídeos.
-    </video>
+            <section class="checkout-grid">
+            <aside class="checkout-summary">
+                <h2>Resumen del pedido</h2>
+                <div id="checkout-items" class="checkout-items"></div>
+                <div class="checkout-totals">
+                <div class="row">
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal">0€</span>
+                </div>
 
-    <!-- Contenido encima del vídeo -->
-    <div class="video-overlay">
-        <h1 class="reveal">SOBRE BICHO RARO</h1>
-    </div>
-   </section>
+                <div class="row">
+                    <span>Envío</span>
+                    <span id="checkout-shipping">0€</span>
+                </div>
 
-   <!-- SECCIÓN MÁSCARA -->
-<section class="crystal-section">
-    <div >
-        <span>(01)</span>
-        <p>MÁSCARA CRÁNEO<br>Construcción: CESBA Y GUISANDO DISEÑO</p>24 DICIEMBRE 2025 · 09 ENERO 2026
-    </div>
-    <div class="crystal-wrapper">
-        <div class="crystal-ball">
-            <!-- Cambiamos video por img -->
-            <img class="crystal-image" src="media/img/foto6.jpg" alt="Avalon Film">
-            <div class="crystal-glass"></div>
-        </div>
-    </div>
-</section>
+                <div class="row total">
+                    <span>Total</span>
+                    <span id="checkout-total">0€</span>
+                </div>
+                </div>
 
- <!-- mácara 3d -->
-<section class="seccion-3d">
-    <model-viewer 
-        src="media/3D/modelo3d.gltf" 
-        alt="Un modelo 3D interactivo" 
-        auto-rotate 
-        camera-controls 
-        shadow-intensity="1" 
-        touch-action="pan-y">
-    </model-viewer>
-</section>
+                <p id="checkout-empty" class="checkout-empty" style="display:none;">
+                Tu carrito está vacío. Vuelve al catálogo para añadir productos.
+                </p>
 
+                <a href="catalogo.html" class="checkout-backlink">Seguir comprando</a>
+            </aside>
 
+            <!---- Formulario ---->
+            <section class="checkout-form">
+                <h2>Datos de envío</h2>
 
-<!-- SECCIÓN VESTUARIO -->
-<section class="vestuario-section">
-    <!-- Marquee Diagonal -->
-    <div class="marquee-diagonal">
-        <div class="marquee-wrapper">
-            <div class="marquee-text">
-                (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO (02) VESTUARIO
-            </div>
-        </div>
-    </div>
+                <form id="checkout-form">
+                <div class="field">
+                    <label>Nombre y apellidos</label>
+                    <input type="text" id="ship-name" required>
+                </div>
 
-        <!-- TEXTO PEQUEÑO A LA DERECHA -->
-    <div class="vestuario-info">
-        <p>(02)</p>
-        <p>VESTUARIO</p>
-        <p>Confección: ANDER BERTOLÍN</p>
-        <p>FEBRERO 2025 - MARZO 2025</p>
-    </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" id="ship-email" required>
+                </div>
 
-    <!-- Galería (Reutilizando tu lógica de la Home) -->
-    <div class="galeria-vestuario reveal">
+                <div class="field">
+                    <label>Dirección</label>
+                    <input type="text" id="ship-address" required>
+                </div>
 
-        <div class="galeria-item pos-1">
-            <img src="media/img/vestuario.png" alt="Vestuario 1">
-            <div class="ver-mas">PARTE DE ARRIBA</div>
-        </div>
-        <div class="galeria-item pos-2">
-            <img src="media/img/pantalón.png" alt="Vestuario 2">
-            <div class="ver-mas">PANTALÓN</div>
-        </div>
-        <!-- ... añade tus 8 fotos con las clases pos-1 a pos-8 ... -->
-    </div>
+                <div class="field two">
+                    <div>
+                        <label>Ciudad</label>
+                        <input type="text" id="ship-city" required>
+                    </div>
+                    <div>
+                        <label>Código postal</label>
+                        <input type="text" id="ship-zip" required>
+                    </div>
+                </div>
 
+                <div class="field">
+                    <label>País</label>
+                    <input type="text" id="ship-country" value="España" required>
+                </div>
 
-    <!-- ================= APLICACIÓN DEL VESTUARIO ================= -->
-<section class="carrusel-section">
-    <div class="carrusel-header">
-        <span>(02)</span>
-        <h2>APLICACIÓN DEL VESTUARIO</h2>
-    </div>
+                <h2>Pago</h2>
 
-    <div class="carrusel-estatico">
-        <div class="carrusel-item">
-            <img src="media/img/foto1.jpg" alt="Item 1">
-        </div>
-        <div class="carrusel-item">
-            <img src="media/img/foto2.jpg" alt="Item 2">
-        </div>
-        <div class="carrusel-item">
-            <img src="media/img/foto3.jpg" alt="Item 3">
-        </div>
-        <div class="carrusel-item">
-            <img src="media/img/foto4.jpg" alt="Item 4">
-        </div>
-        <div class="carrusel-item">
-            <img src="media/img/foto8.jpg" alt="Item 5">
-        </div>
-    </div>
-</section>
-    
-</section>
+                <div class="field">
+                    <label>Número de tarjeta</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                </div>
 
+                <div class="field two">
+                    <div>
+                    <label>Caducidad</label>
+                    <input type="text" id="card-exp" placeholder="MM/AA" required>
+                    </div>
+                    <div>
+                    <label>CVV</label>
+                    <input type="text" id="card-cvv" placeholder="123" required>
+                    </div>
+                </div>
 
-
-
-
-
-</main>
+                <button type="submit" id="place-order" class="place-order-btn">
+                    Pagar y realizar pedido
+                </button>
+                </form>
+            </section>
+            </section>
+        </main>
 
 
 <footer class="site-footer-container">

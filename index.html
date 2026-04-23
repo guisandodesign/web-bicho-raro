@@ -67,7 +67,7 @@
 
     <a href="#">Inicio</a>
     <a href="#about">Qué es Bicho Raro</a>
-    <a href="#sobre el proyecto">Sobre el proyecto</a>
+    <a href="#about.html">Sobre el proyecto</a>
     <a href="#">Tienda</a>
     <a href="#">Contacto</a>
 </div>
@@ -185,35 +185,50 @@
     <!-- Contenedor de productos -->
     <div class="shop-container">
         
-        <!-- Producto 1: Kit Máscara -->
-        <div class="shop-item item-kit">
-            <img src="media/img/kit-mascara.png" alt="Kit Máscara">
-            <div class="product-info">
-                <h3>KIT MÁSCARA</h3>
-                <p>25.00 €</p>
-                <button onclick="addToCart('Kit Máscara', 25.00)">AÑADIR</button>
-            </div>
-        </div>
+<!-- Producto 1: Kit Máscara -->
+<div class="shop-item item-kit">
+    <img src="media/img/kit-mascara.png" alt="Kit Máscara">
+    <div class="product-info">
+        <h3>KIT MÁSCARA</h3>
+        <p>25.00 €</p>
+        <!-- Añadida la ruta de la imagen en el tercer parámetro -->
+        <button onclick="addToCart('Kit Máscara', 25.00, 'media/img/kit-mascara.png')">AÑADIR</button>
+    </div>
+</div>
 
-        <!-- Producto 2: Fanzine -->
-        <div class="shop-item item-fanzine">
-            <img src="media/img/fanzine.png" alt="Fanzine">
-            <div class="product-info">
-                <h3>FANZINE</h3>
-                <p>12.00 €</p>
-                <button onclick="addToCart('Fanzine', 12.00)">AÑADIR</button>
-            </div>
-        </div>
+<!-- Producto 2: Fanzine -->
+<div class="shop-item item-fanzine">
+    <img src="media/img/fanzine.png" alt="Fanzine">
+    <div class="product-info">
+        <h3>FANZINE</h3>
+        <p>10.00 €</p>
+        <!-- Añadida la ruta de la imagen en el tercer parámetro -->
+        <button onclick="addToCart('Fanzine', 10.00, 'media/img/fanzine.png')">AÑADIR</button>
+    </div>
+</div>
 
-        <!-- Producto 3: Camiseta -->
-        <div class="shop-item item-camiseta">
-            <img src="media/img/camiseta.png" alt="Camiseta">
-            <div class="product-info">
-                <h3>CAMISETA</h3>
-                <p>20.00 €</p>
-                <button onclick="addToCart('Camiseta', 20.00)">AÑADIR</button>
-            </div>
-        </div>
+<!-- Producto 3: Camiseta (La lógica de la imagen se gestiona en el JS) -->
+<div class="shop-item item-camiseta">
+    <div class="image-container">
+        <img src="media/img/camiseta-delantera.png" alt="Camiseta Frontal" class="img-front">
+        <img src="media/img/camiseta-trasera.png" alt="Camiseta Trasera" class="img-back">
+    </div>
+    <div class="product-info">
+        <h3>CAMISETA</h3>
+        <p>20.00 €</p>
+        <select id="talla-camiseta" class="select-talla">
+            <option value="S">Talla S</option>
+            <option value="M" selected>Talla M</option>
+            <option value="L">Talla L</option>
+        </select>
+        <button onclick="agregarCamiseta()">AÑADIR</button>
+    </div>
+</div>
+
+</div>
+
+
+
 
     </div>
 </section>

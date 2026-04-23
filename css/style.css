@@ -200,6 +200,29 @@ body {
     cursor: pointer;
 }
 
+.remove-item {
+    background: none;
+    border: none;
+    color: #ff4444; /* Rojo para borrar */
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+    padding: 5px;
+}
+
+.remove-item:hover {
+    color: black;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: space-between;
+}
+
+
+
+
 /* HERO IMAGE: Ocupa ancho total, alto proporcional */
 .hero-image-container {
     width: 100%;
@@ -497,6 +520,44 @@ body {
 .product-info button:hover { background: white; color: black; }
 
 
+/* Contenedor de las imágenes */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Ajusta según el tamaño de tus fotos */
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.4s ease-in-out; /* Transición suave */
+}
+
+/* Estado inicial */
+.img-back {
+    opacity: 0; /* La trasera está oculta */
+}
+
+.img-front {
+    opacity: 1; /* La delantera es visible */
+}
+
+/* Efecto HOVER */
+.shop-item:hover .img-front {
+    opacity: 0; /* Se oculta la delantera */
+}
+
+.shop-item:hover .img-back {
+    opacity: 1; /* Se muestra la trasera */
+}
+
+
+
 /* VÍDEO HEADER ABOUT */
 .hero-video-container {
     position: relative;
@@ -610,6 +671,27 @@ body {
             rgba(0,0,0,0.2) 100%
         );
 }
+
+
+/* MÁSCARA 3D */
+.seccion-3d {
+    width: 100%;
+    height: 500px; /* Altura del visor 3D */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* O el naranja de tu web */
+}
+
+model-viewer {
+    width: 100%;
+    height: 500px;
+    outline: none;
+    --poster-color: transparent; /* Evita fondo blanco mientras carga */
+    background-color: #eee;
+    display: block;
+}
+
 
 
 /* SECCIÓN VESTUARIO */
@@ -739,6 +821,368 @@ body {
 }
 
 
+/* ===== CHECKOUT ===== */
+.checkout-page{
+    padding-top: 110px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 80px;
+    background: #f4cba9;
+}
+
+.checkout-title{
+    font-family: "Atherosser";
+    font-weight: 400;
+    font-size: 44px;
+    margin: 18px 0 28px;
+    color: #111;
+}
+
+.checkout-grid{
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.checkout-summary,
+.checkout-form{
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 16px;
+    padding: 26px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.checkout-summary h2,
+.checkout-form h2{
+    font-family: "Hubballi", sans-serif;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #222;
+    margin: 0.2rem 0;
+}
+
+.checkout-items{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    min-height: 80px;
+}
+
+.checkout-totals{
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkout-totals .row{
+    display: flex;
+    justify-content: space-between;
+    font-family: "Hubballi", sans-serif;
+    font-size: 14px;
+    color: #222;
+}
+
+.checkout-totals .row.total{
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.10);
+    font-size: 16px;
+}
+
+#checkout-form{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.field label{
+    display: block;
+    font-family: "Hubballi", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    color: rgba(0,0,0,0.75);
+    margin-bottom: 8px;
+}
+
+.field input{
+    width: 100%;
+    padding: 12px 12px;
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: 12px;
+    background: rgba(244,242,237,0.75);
+    outline: none;
+    font-size: 14px;
+    color: #111;
+}
+
+.field.two{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.place-order-btn{
+    margin-top: 8px;
+    width: 100%;
+    padding: 14px 14px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    background: #111;
+    color: #fff;
+    font-family: "Hubballi", sans-serif;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+.checkout-backlink,
+.checkout-backlink:link,
+.checkout-backlink:visited,
+.checkout-backlink:hover,
+.checkout-backlink:active{
+    color: #111 !important;
+    text-decoration: none !important;
+}
+
+.checkout-backlink{
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 14px;
+    margin-top: 1rem;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(0,0,0,0.18);
+    font-family: "Hubballi", sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+    transition: transform 0.2s ease, 0.2s ease, border-color 0.2s ease;
+}
+
+.checkout-backlink:hover{
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.75);
+    border-color: rgba(0,0,0,0.28);
+}
+
+.checkout-page{
+    font-family: "Hubballi", sans-serif;
+    color: #111;
+}
+
+.checkout-title{
+    font-family: "Atherosser";
+}
+
+.checkout-summary h2,
+.checkout-form h2{
+    font-family: "Hubballi", sans-serif;
+    letter-spacing: 3px;
+}
+
+.checkout-items{
+    gap: 14px;
+}
+
+.checkout-item{
+    display: grid;
+    grid-template-columns: 84px 1fr auto;
+    gap: 14px;
+    align-items: center;
+
+    padding: 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.10);
+    background: rgba(255,255,255,0.50);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+}
+
+.checkout-thumb{
+    width: 84px;
+    height: 84px;
+    border-radius: 14px;
+    object-fit: cover;
+    background: rgba(0,0,0,0.06);
+}
+
+.checkout-info{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.checkout-name{
+    font-family: "Atherosser";
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.checkout-meta{
+    font-family: "Hubballi", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+    color: rgba(0,0,0,0.65);
+}
+
+.checkout-price{
+    font-family: "Hubballi", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+}
+
+.checkout-totals .row{
+    font-family: "Hubballi", sans-serif;
+    letter-spacing: 0.8px;
+}
+
+.checkout-totals .row.total{
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.cart-item{
+    position: relative; 
+    padding-right: 44px; 
+}
+
+.cart-item .remove-item{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    color: #bbb;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.cart-item .remove-item:hover{
+    color: #000;
+}
+
+
+/* ===== CONFIRMACIÓN DE COMPRA ===== */
+.confirm-page{
+    padding-top: 110px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 80px;
+    background: #f4f2ed;
+    color: #111;
+    font-family: "Hubballi", sans-serif;
+}
+
+.confirm-page{
+    max-width: 920px;
+    margin: 0 auto;
+
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 18px;
+    padding: 28px;
+
+    box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.confirm-page h1{
+    font-family: "Averia Serif Libre", serif;
+    font-weight: 400;
+    font-size: 44px;
+    margin: 0 0 14px;
+    line-height: 1.05;
+}
+
+#order-id{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    color: rgba(0,0,0,0.75);
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    margin-bottom: 18px;
+}
+
+#order-summary{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#order-summary p{
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+
+    padding: 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.10);
+    background: rgba(255,255,255,0.50);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+
+    font-size: 15px;
+    letter-spacing: 0.4px;
+    color: rgba(0,0,0,0.85);
+}
+
+#order-summary p strong{
+    color: #111;
+}
+
+.confirm-page a,
+.confirm-page a:link,
+.confirm-page a:visited{
+    margin-top: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(0,0,0,0.18);
+
+    font-family: "Hubballi", sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #111;
+
+    transition: transform 0.2s ease, 0.2s ease, border-color 0.2s ease;
+}
+
+.confirm-page a:hover{
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.75);
+    border-color: rgba(0,0,0,0.28);
+}
 
 
 /* FOOTER */
