@@ -524,18 +524,36 @@ body {
 .image-container {
     position: relative;
     width: 100%;
-    height: 350px; /* Ajusta según el tamaño de tus fotos */
-    overflow: hidden;
+    height: 400px; /* Ajusta según el tamaño de tus fotos */
+    overflow: visible;
 }
 
 .image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     position: absolute;
     top: 0;
     left: 0;
     transition: opacity 0.4s ease-in-out; /* Transición suave */
+}
+
+.item-camiseta {
+    top: 5%;
+    right: 5%;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.select-talla {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    font-family: 'Atherosser';
+    border: 1px solid black;
+    background: white;
 }
 
 /* Estado inicial */
@@ -545,6 +563,7 @@ body {
 
 .img-front {
     opacity: 1; /* La delantera es visible */
+    width: 100%;
 }
 
 /* Efecto HOVER */

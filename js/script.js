@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const selector = document.getElementById("talla-camiseta");
         const talla = selector ? selector.value : "M";
         // Añadimos la imagen delantera de la camiseta
-        window.addToCart(`Camiseta (Talla ${talla})`, 20.00, 'media/img/camiseta-delantera.png');
+        window.addToCart(`Camiseta (Talla ${talla})`, 15.00, 'media/img/camiseta.trasera.png');
     };
 
     /* BOTÓN COMPRAR -> REDIRECCIÓN A CHECKOUT */
