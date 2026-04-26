@@ -157,6 +157,14 @@ if (document.querySelector("#inicio")) {
 
 });
 
+
+/* ================= BICHILLO ================= */
+window.onscroll = function() {
+  var theta = document.documentElement.scrollTop / 10; // Ajusta el '/ 10' para más o menos velocidad de giro
+  document.getElementById('imagen-rotar').style.transform = 'rotate(' + theta + 'deg)';
+};
+
+
 /* ================= CRYSTAL BALL PARALLAX ================= */
 document.addEventListener("mousemove", (e) => {
     const ball = document.querySelector(".crystal-ball");

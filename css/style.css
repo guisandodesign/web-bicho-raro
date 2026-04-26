@@ -220,6 +220,54 @@ body {
     justify-content: space-between;
 }
 
+/* BICHILLO */
+/* Estilos base (Ordenador) */
+.tienda-flotante {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  z-index: 1998;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px; /* Ancho del área táctil */
+}
+
+#imagen-rotar {
+  width: 80px; 
+  height: 80px;
+  object-fit: contain;
+  will-change: transform; /* Optimiza el rendimiento en móviles */
+}
+
+.tienda-flotante span {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+  margin-top: 5px;
+  background: #f49d5f; /* Fondo ligero para leer mejor sobre fotos */
+  padding: 2px 8px;
+}
+
+/* Ajustes para Móvil (Pantallas de menos de 768px) */
+@media (max-width: 768px) {
+  .tienda-flotante {
+    right: 10px; /* Más pegado al borde */
+    width: 60px;
+  }
+  
+  #imagen-rotar {
+    width: 50px; /* Imagen más pequeña para no tapar texto */
+    height: 50px;
+  }
+
+  .tienda-flotante span {
+    font-size: 11px;
+  }
+}
 
 
 
