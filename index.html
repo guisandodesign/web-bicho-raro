@@ -197,15 +197,19 @@
     <div class="shop-container">
         
 <!-- Producto 1: Kit Máscara -->
+<!-- Producto 1: Kit Máscara -->
 <div class="shop-item item-kit">
-    <img src="media/img/kit máscara.png" alt="Kit Máscara">
+    <div class="image-container"> <!-- Añadimos este contenedor -->
+        <img src="media/img/kit máscara.png" alt="Kit Máscara Frontal" class="img-front">
+        <img src="media/img/kit máscara abierta.png" alt="Kit Máscara Trasera" class="img-back">
+    </div>
     <div class="product-info">
         <h3>KIT MÁSCARA</h3>
         <p>25.00 €</p>
-        <!-- Añadida la ruta de la imagen en el tercer parámetro -->
-        <button onclick="addToCart('Kit Máscara', 25.00, 'media/img/kit-mascara.png')">AÑADIR</button>
+        <button onclick="addToCart('Kit Máscara', 25.00, 'media/img/kit máscara abierta.png')">AÑADIR</button>
     </div>
 </div>
+
 
 <!-- Producto 2: Fanzine -->
 <div class="shop-item item-fanzine">
