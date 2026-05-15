@@ -373,7 +373,7 @@ body {
 }
 
 .intro-texto {
-    font-family: 'Averia Serif Libre', serif;
+    font-family: 'Atherosser';
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 20px;
@@ -562,7 +562,7 @@ body {
     padding: 8px 15px;
     margin-top: 10px;
     cursor: pointer;
-    font-family: 'Averia Serif Libre';
+    font-family: 'Atherosser';
 }
 
 .product-info button:hover { background: white; color: black; }
@@ -745,7 +745,7 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
     color: #ffffff;
-    font-family: 'Krona One', sans-serif;
+    font-family: 'Atherosser';
     font-size: 13px;
     letter-spacing: 1px;
     display: flex;
@@ -778,7 +778,7 @@ body {
 }
 
 .sinopsis-texto-contenido h3 {
-    font-family: 'Krona One', sans-serif;
+    font-family: 'Atherosser';
     font-size: 16px;
     letter-spacing: 1px;
     margin-top: 0;
@@ -987,7 +987,7 @@ body {
 .carrusel-header {
     text-align: center;
     margin-bottom: 30px;
-    font-family: 'Averia Serif Libre', serif;
+    font-family: 'Atherosser';
     text-transform: uppercase;
 }
 
