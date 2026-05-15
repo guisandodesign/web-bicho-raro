@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-/* ================= EFECTOS VISUALES (GSAP & REVEAL) ================= */
+/* ================= EFECTOS VISUALES (GSAP, REVEAL & SINOPSIS) ================= */
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Scroll Reveal
     const observer = new IntersectionObserver((entries) => {
@@ -126,36 +126,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-// 2. GSAP Hero Zoom (Solo si existe #inicio)
-gsap.registerPlugin(ScrollTrigger);
-if (document.querySelector("#inicio")) {
-    // Detectamos si el ancho de pantalla es de móvil
-    const isMobile = window.innerWidth < 768;
+    // 1.5. Lógica de apertura/cierre de la Sinopsis Interactiva
+    const sinopsisBloque = document.getElementById("sinopsisBloque");
+    if (sinopsisBloque) {
+        const imageWrapper = sinopsisBloque.querySelector(".sinopsis-imagen-wrapper");
+        imageWrapper?.addEventListener("click", () => {
+            sinopsisBloque.classList.toggle("active");
+        });
+    }
 
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#inicio",
-            start: "top top",
-            // Si es móvil, el espacio del scroll es 800, si no, 1800
-            end: isMobile ? "+=800" : "+=1800",
-            scrub: true,
-            pin: true,
-            pinSpacing: true
-        }
-    });
+    // 2. GSAP Hero Zoom (Solo si existe #inicio)
+    gsap.registerPlugin(ScrollTrigger);
+    if (document.querySelector("#inicio")) {
+        // Detectamos si el ancho de pantalla es de móvil
+        const isMobile = window.innerWidth < 768;
 
-    tl.to(".hero-img", { scale: 2.2, ease: "none" }, 0);
-    
-    // Ajuste de posición del isotipo en móvil
-    tl.to(".hero-secundaria", { 
-        opacity: 1, 
-        scale: 1, 
-        left: isMobile ? "50%" : "30%", // Centrado en móvil, lateral en PC
-        ease: "power2.inOut" 
-    }, 0.5);
-}
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#inicio",
+                start: "top top",
+                // Si es móvil, el espacio del scroll es 800, si no, 1800
+                end: isMobile ? "+=800" : "+=1800",
+                scrub: true,
+                pin: true,
+                pinSpacing: true
+            }
+        });
 
+        tl.to(".hero-img", { scale: 2.2, ease: "none" }, 0);
+        
+        // Ajuste de posición del isotipo en móvil
+        tl.to(".hero-secundaria", { 
+            opacity: 1, 
+            scale: 1, 
+            left: isMobile ? "50%" : "30%", // Centrado en móvil, lateral en PC
+            ease: "power2.inOut" 
+        }, 0.5);
+    }
 });
+
 
 
 /* ================= BICHILLO ================= */
@@ -163,6 +172,8 @@ window.onscroll = function() {
   var theta = document.documentElement.scrollTop / 10; // Ajusta el '/ 10' para más o menos velocidad de giro
   document.getElementById('imagen-rotar').style.transform = 'rotate(' + theta + 'deg)';
 };
+
+
 
 
 /* ================= CRYSTAL BALL PARALLAX ================= */

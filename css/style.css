@@ -695,6 +695,141 @@ body {
     z-index: 1;
 }
 
+/* ================= SECCIÓN INTERACTIVA SINOPSIS ================= */
+.sinopsis-interactiva-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.sinopsis-bloque {
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+    border-radius: 4px;
+    overflow: hidden;
+    width: auto;
+    max-width: 100%;
+    transition: box-shadow 0.4s ease;
+}
+
+.sinopsis-imagen-wrapper {
+    position: relative;
+    width: 500px;
+    height: 350px;
+    flex-shrink: 0;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.sinopsis-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.sinopsis-imagen-wrapper:hover .sinopsis-img {
+    transform: scale(1.03);
+}
+
+.sinopsis-txt-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    font-family: 'Krona One', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: opacity 0.4s ease;
+}
+
+/* El texto de indicación desaparece al abrirse */
+.sinopsis-bloque.active .sinopsis-txt-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Área de contenido del texto plegado por defecto */
+.sinopsis-texto-contenido {
+    width: 0; /* Forzamos ancho absoluto cero */
+    max-width: 0;
+    opacity: 0;
+    visibility: hidden; /* Oculta el contenedor por completo para que no renderice el bloque blanco */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1), max-width 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, padding 0.7s ease, visibility 0.7s;
+    box-sizing: border-box;
+}
+
+.sinopsis-texto-contenido h3 {
+    font-family: 'Krona One', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #000000;
+    white-space: nowrap; 
+}
+
+.sinopsis-texto-contenido p {
+    font-family: 'Atherosser';
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+    min-width: 400px; /* Ancho fijo para mantener la estructura interna del texto */
+}
+
+/* Estado Desplegado */
+.sinopsis-bloque.active {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    background-color: #ffffff; 
+}
+
+.sinopsis-bloque.active .sinopsis-texto-contenido {
+    width: 550px; /* Desiega el contenedor al ancho deseado en PC */
+    max-width: 550px;
+    opacity: 1;
+    visibility: visible; /* Hace el texto visible de forma sincronizada */
+    padding: 40px;
+}
+
+/* Adaptación responsive para dispositivos móviles */
+@media (max-width: 768px) {
+    .sinopsis-bloque {
+        flex-direction: column;
+    }
+    .sinopsis-imagen-wrapper {
+        width: 100%;
+        height: 280px;
+    }
+    .sinopsis-bloque.active .sinopsis-texto-contenido {
+        max-width: 100%;
+        padding: 25px;
+    }
+    .sinopsis-texto-contenido p {
+        min-width: 100%;
+    }
+}
+
+
+
 
 /* ================= CRYSTAL BALL SECCIÓN MÁSCARA ================= */
 .crystal-section{
@@ -1652,6 +1787,185 @@ body {
         opacity: 1;
     }
 }
+
+/* ================= SECCIÓN INTERACTIVA SINOPSIS RESPONSIVE ================= */
+.sinopsis-interactiva-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.sinopsis-bloque {
+    display: flex;
+    flex-direction: row; /* En PC se muestra en fila */
+    align-items: stretch; /* Hace que el fondo del texto mida lo mismo que la foto */
+    background-color: #fafafa;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1000px; /* Tamaño máximo equilibrado en escritorio */
+    transition: box-shadow 0.4s ease, background-color 0.3s ease;
+}
+
+.sinopsis-imagen-wrapper {
+    position: relative;
+    width: 450px; /* Ancho fijo óptimo en ordenadores */
+    height: 380px; /* Altura fija para mantener proporciones artísticas */
+    flex-shrink: 0;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.sinopsis-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.sinopsis-imagen-wrapper:hover .sinopsis-img {
+    transform: scale(1.04);
+}
+
+.sinopsis-txt-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    font-family: 'Krona One', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: opacity 0.4s ease, background-color 0.4s ease;
+}
+
+.sinopsis-imagen-wrapper:hover .sinopsis-txt-overlay {
+    background: rgba(0, 0, 0, 0.55); /* Oscurece un poco en hover para dar feedback */
+}
+
+/* Ocultar el texto flotante de aviso cuando la tarjeta está desplegada */
+.sinopsis-bloque.active .sinopsis-txt-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Área del texto oculta por defecto lateralmente */
+.sinopsis-texto-contenido {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: max-width 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, padding 0.7s ease;
+    box-sizing: border-box;
+}
+
+.sinopsis-texto-contenido h3 {
+    font-family: 'Krona One', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+.sinopsis-texto-contenido p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+    min-width: 280px; /* Evita que las palabras se amontonen verticalmente durante el despliegue */
+}
+
+/* ================= ESTADOS ACTIVOS EN ESCRITORIO ================= */
+.sinopsis-bloque.active {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    background-color: #ffffff; /* Cambia a blanco puro al abrirse para destacar */
+}
+
+.sinopsis-bloque.active .sinopsis-texto-contenido {
+    max-width: 550px; /* Ancho que ocupará el texto al abrirse en PC */
+    opacity: 1;
+    padding: 40px;
+}
+
+
+/* ================= REGLAS DE ADAPTACIÓN MOVIL Y TABLET (RESPONSIVE) ================= */
+
+/* ================= REGLAS DE ADAPTACIÓN MOVIL Y TABLET (RESPONSIVE) ================= */
+
+/* 1. Tablets y portátiles pequeños (Menos de 992px) */
+@media (max-width: 992px) {
+    .sinopsis-imagen-wrapper {
+        width: 380px; 
+        height: 350px;
+    }
+    .sinopsis-bloque.active .sinopsis-texto-contenido {
+        width: 450px;
+        max-width: 450px;
+        padding: 30px;
+    }
+    .sinopsis-texto-contenido p {
+        font-size: 13.5px;
+        min-width: 350px;
+    }
+}
+
+/* 2. Teléfonos Móviles (Menos de 768px) */
+@media (max-width: 768px) {
+    .sinopsis-interactiva-container {
+        margin: 40px auto;
+        padding: 0 15px; 
+    }
+
+    .sinopsis-bloque {
+        flex-direction: column; 
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .sinopsis-imagen-wrapper {
+        width: 100%; 
+        height: 260px; 
+    }
+
+    .sinopsis-texto-contenido {
+        width: 100% !important; /* En móviles el ancho es total, el control es vertical */
+        max-width: 100% !important;
+        height: 0;
+        max-height: 0; 
+        transition: height 0.7s cubic-bezier(0.25, 1, 0.5, 1), max-height 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, padding 0.7s ease, visibility 0.7s;
+    }
+
+    .sinopsis-texto-contenido p {
+        min-width: 100%; 
+    }
+
+    /* Modificación del estado activo exclusiva para móviles */
+    .sinopsis-bloque.active .sinopsis-texto-contenido {
+        height: auto;
+        max-height: 500px; 
+        opacity: 1;
+        visibility: visible;
+        padding: 25px 20px; 
+    }
+}
+
 
 /* ================= RESPONSIVE: MÁSCARA (CRYSTAL BALL) ================= */
 
