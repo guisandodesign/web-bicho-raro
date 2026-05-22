@@ -528,7 +528,7 @@ body {
     z-index: 10;
     max-width: 1200px;
     margin: 0 auto;
-    height: 600px;
+    height: 800px;
 }
 
 .shop-item {
@@ -549,9 +549,37 @@ body {
 }
 
 /* Posiciones tipo collage */
-.item-kit { top: 10%; left: 5%; width: 500px;}
-.item-fanzine { top: 40%; left: 40%; width: 220px; }
-.item-camiseta { top: 5%; right: 5%; width: 320px; }
+/* 2. Distribución del collage modificada */
+
+/* Extremo Izquierdo */
+.item-kit { 
+    top: 5%; 
+    left: 2%; 
+    width: 420px; 
+}
+
+/* COLUMNA CENTRAL (Llaveros arriba, Fanzine abajo) */
+.item-llaveros { 
+    top: 10%;       /* Posición alta en el centro */
+    left: 42%; 
+    width: 200px; 
+}
+
+.item-fanzine { 
+    top: 52%;       /* Baja para dejar espacio a los llaveros arriba */
+    left: 42%; 
+    width: 200px; 
+}
+
+/* Extremo Derecho */
+.item-camiseta { 
+    top: 5%; 
+    right: 5%; 
+    width: 320px; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 /* Info y Botón */
 .product-info h3 { font-size: 1rem; margin-top: 10px; }
@@ -646,6 +674,9 @@ body {
 .shop-item:hover .img-back {
     opacity: 1; /* Se muestra la trasera */
 }
+
+
+
 
 
 
